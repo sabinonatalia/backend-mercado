@@ -35,7 +35,7 @@ public class Usuario {
 	 @Email
 	 private String email;
 
-	 //Relaciomento
+	 //Relacionamento
 	 @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL)
 	 @JsonIgnoreProperties("usuario")
 	 private List<Produto> produto;
