@@ -16,29 +16,29 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name =  "tb_usuario")
+@Table(name = "tb_usuario")
 public class Usuario {
 
-	 @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Long id;
-	 
-	 @NotNull
-	 @Size(min = 5, max = 100, message = "Este campo precisa de no mínimo 5 e no máximo 100 caracteres!")
-     private String nome;
-   
-	 @NotNull
-	 @Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres")
-     private String senha;
-	 
-	 @NotNull
-	 @Email
-	 private String email;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	 //Relaciomento
-	 @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL)
-	 @JsonIgnoreProperties("usuario")
-	 private List<Produto> produto;
+	@NotNull
+	@Size(min = 5, max = 100, message = "Este campo precisa de no mínimo 5 e no máximo 100 caracteres!")
+	private String nome;
+
+	@NotNull
+	@Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres")
+	private String senha;
+
+	@NotNull
+	@Email
+	private String email;
+
+	// Relacionamento
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")
+	private List<Produto> produto;
 
 	public Long getId() {
 		return id;
@@ -79,6 +79,5 @@ public class Usuario {
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
-	 
-	 
+
 }
