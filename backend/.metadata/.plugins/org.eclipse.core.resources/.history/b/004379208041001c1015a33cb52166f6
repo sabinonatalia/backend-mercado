@@ -1,0 +1,5 @@
+package com.projetowinning.vilayara.model;
+
+public class Usuario {
+
+}
