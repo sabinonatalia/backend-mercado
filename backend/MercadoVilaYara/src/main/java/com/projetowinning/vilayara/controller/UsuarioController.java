@@ -1,6 +1,6 @@
 package com.projetowinning.vilayara.controller;
 
-import com.projetowinning.vilayara.model.Produto;
+
 import com.projetowinning.vilayara.model.Usuario;
 import com.projetowinning.vilayara.repository.UsuariosRepository;
 
@@ -32,7 +32,7 @@ public class UsuarioController {
 	UsuariosRepository UsuariosRepository;
 
 	@PostMapping("/usuario")
-	public void salvarProduto(@RequestBody Usuario usuario) {
+	public void salvarUsuario(@RequestBody Usuario usuario) {
 		UsuariosRepository.save(usuario);
 	}
 	
@@ -67,6 +67,4 @@ public class UsuarioController {
 		return UsuariosRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
 	}
 	
-	
-
 }

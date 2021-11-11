@@ -4,13 +4,15 @@ import com.projetowinning.vilayara.model.Produto;
 import com.projetowinning.vilayara.repository.ProdutosRepository;
 
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.Collection;  
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +45,13 @@ public class ProdutoController {
 		return ProdutosRepository.save(produto);
 	}
 	
-	@GetMapping("/produto/list/nome")
+
+	@DeleteMapping("/produto")
+	public void deletarProduto(@RequestBody Produto produto) {
+		ProdutosRepository.delete(produto);
+	}
+  
+  @GetMapping("/produto/list/nome")
 	@Query(value = "SELECT * FROM Produto ORDER BY nome \n-- #pageable\n",
 		countQuery = "SELECT count(*) FROM Produto",
 		nativeQuery = true)
@@ -70,10 +78,5 @@ public class ProdutoController {
 		return ProdutosRepository.findAll(Sort.by(Sort.Direction.ASC, "preco"));
 	
 	}	
-	
-	@DeleteMapping("/produto")
-	public void deletarProduto(@RequestBody Produto produto) {
-		ProdutosRepository.delete(produto);
-	}
 
 }

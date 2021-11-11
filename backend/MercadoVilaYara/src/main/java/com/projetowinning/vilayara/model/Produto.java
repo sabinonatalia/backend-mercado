@@ -20,29 +20,29 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Produto {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull
-    private String nome;
+	private String nome;
 
-    @NotNull
-    private String categoria;
+	@NotNull
+	private String categoria;
 
-    @NotNull
-    private String descricao;
+	@NotNull
+	private String descricao;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	@NotNull(message = "Preço é obrigatório!")
 	@Positive(message = "O preço deve ser maior do que zero!")
-    private BigDecimal preco;
+	private BigDecimal preco;
 
-    private int qtd;
+	private int qtd;
 
-    private String imgURL;
+	private String imgURL;
 
-    //Relacionamento
-    @ManyToOne
+	// Relacionamento
+	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Usuario usuario;
 
@@ -108,12 +108,6 @@ public class Produto {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-<<<<<<< Updated upstream
-    
-	
-    
-=======
 
 	@Override
 	public int hashCode() {
@@ -136,5 +130,5 @@ public class Produto {
 				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
 				&& Objects.equals(preco, other.preco) && qtd == other.qtd;
 	}
->>>>>>> Stashed changes
+
 }
