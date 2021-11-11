@@ -1,6 +1,7 @@
 package com.projetowinning.vilayara.model;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -107,5 +108,27 @@ public class Produto {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}<<<<<<< CRUDv1>>>>>>> main
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(categoria, descricao, id, nome, preco, qtd);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Produto other = (Produto) obj;
+		return Objects.equals(categoria, other.categoria) && Objects.equals(descricao, other.descricao)
+				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
+				&& Objects.equals(preco, other.preco) && qtd == other.qtd;
+	}
+
 }
