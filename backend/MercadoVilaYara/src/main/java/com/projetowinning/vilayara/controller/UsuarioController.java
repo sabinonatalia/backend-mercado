@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,14 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
 @RequestMapping(value = "/api")
-
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
 	
 	@Autowired
 	UsuariosRepository UsuariosRepository;
 
+	
 	@PostMapping("/usuario")
 	public void salvarUsuario(@RequestBody Usuario usuario) {
 		UsuariosRepository.save(usuario);

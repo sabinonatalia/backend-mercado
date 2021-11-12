@@ -35,6 +35,8 @@ public class Usuario {
 	@NotNull
 	@Email
 	private String email;
+	
+	private String tipo;
 
 	// Relacionamento
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
@@ -72,7 +74,7 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public List<Produto> getProduto() {
 		return produto;
 	}
@@ -80,10 +82,19 @@ public class Usuario {
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
+	
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, id, nome, senha);
+		return Objects.hash(email, id, nome, senha, tipo);
 	}
 
 	@Override
@@ -99,6 +110,6 @@ public class Usuario {
 		}
 		Usuario other = (Usuario) obj;
 		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
-				&& Objects.equals(senha, other.senha);
+				&& Objects.equals(senha, other.senha) && Objects.equals(tipo, other.tipo);
 	}
 }
