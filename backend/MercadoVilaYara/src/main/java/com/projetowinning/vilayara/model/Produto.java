@@ -1,19 +1,18 @@
 package com.projetowinning.vilayara.model;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_produto")
@@ -23,17 +22,16 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
+	
 	private String nome;
 
-	@NotNull
+	
 	private String categoria;
 
-	@NotNull
+	
 	private String descricao;
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
-	@NotNull(message = "Preço é obrigatório!")
 	@Positive(message = "O preço deve ser maior do que zero!")
 	private BigDecimal preco;
 
@@ -42,9 +40,9 @@ public class Produto {
 	private String imgURL;
 
 	// Relacionamento
-	@ManyToOne
-	@JsonIgnoreProperties("produto")
-	private Usuario usuario;
+	//@ManyToOne
+	//@JsonIgnoreProperties("produto")
+	//private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -102,34 +100,11 @@ public class Produto {
 		this.imgURL = imgURL;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
+	//public Usuario getUsuario() {
+	//	return usuario;
+	//}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}	
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(categoria, descricao, id, nome, preco, qtd);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Produto other = (Produto) obj;
-		return Objects.equals(categoria, other.categoria) && Objects.equals(descricao, other.descricao)
-				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
-				&& Objects.equals(preco, other.preco) && qtd == other.qtd;
-	}
-
+	//public void setUsuario(Usuario usuario) {
+		//this.usuario = usuario;
+	//}
 }
