@@ -16,8 +16,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 
 
-//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
@@ -28,20 +26,19 @@ public class Usuario {
 	
 	private String nome;
 	
+	private String sobrenome;
+	
+	
 	private String senha;
 
 	@Email
 	private String email;
 	
-	private String tipo;
+	private boolean admin;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
-	// Relacionamento
-	//@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
-	//@JsonIgnoreProperties("usuario")
-	//private List<Produto> produto;
 
 	public Long getId() {
 		return id;
@@ -75,13 +72,6 @@ public class Usuario {
 		this.email = email;
 	}
 
-	//public List<Produto> getProduto() {
-	//	return produto;
-	//}
-
-	//public void setProduto(List<Produto> produto) {
-		//this.produto = produto;
-	//}
 
 	public Date getData() {
 		return data;
@@ -91,13 +81,23 @@ public class Usuario {
 		this.data = data;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public boolean isAdmin() {
+		return admin;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
+	
+	
 	
 }

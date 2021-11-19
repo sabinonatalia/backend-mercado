@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "tb_produto")
@@ -39,10 +39,6 @@ public class Produto {
 
 	private String imgURL;
 
-	// Relacionamento
-	//@ManyToOne
-	//@JsonIgnoreProperties("produto")
-	//private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -100,11 +96,4 @@ public class Produto {
 		this.imgURL = imgURL;
 	}
 
-	//public Usuario getUsuario() {
-	//	return usuario;
-	//}
-
-	//public void setUsuario(Usuario usuario) {
-		//this.usuario = usuario;
-	//}
 }

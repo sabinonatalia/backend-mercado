@@ -32,56 +32,56 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProdutoController {
 	
 	@Autowired
-	ProdutosRepository ProdutosRepository;
+	ProdutosRepository produtosRepository;
 
 	@GetMapping
 	public ResponseEntity<List<Produto>> ListaProdutos() {
-		return ResponseEntity.ok(ProdutosRepository.findAll());
+		return ResponseEntity.ok(produtosRepository.findAll());
 	}
 
 	// cadastrar um novo produto
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Produto> post(@RequestBody Produto produto) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(ProdutosRepository.save(produto));
+		return ResponseEntity.status(HttpStatus.CREATED).body(produtosRepository.save(produto));
 	}
 	
 
 	// atualizar um produto
 	@PutMapping("/produto/{id}")
 	public ResponseEntity<Produto> atualizaProduto(@RequestBody Produto produto) {
-		return ResponseEntity.status(HttpStatus.OK).body(ProdutosRepository.save(produto));
+		return ResponseEntity.status(HttpStatus.OK).body(produtosRepository.save(produto));
 	}
 
 	// buscar produto pelo nome
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Produto>> getById(@PathVariable String nome) {
-		return ResponseEntity.ok(ProdutosRepository.findAllByNomeContainingIgnoreCase(nome));
+		return ResponseEntity.ok(produtosRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 
 	// deletar um produto
 	@DeleteMapping("/produto/{id}")
 	public void deletarProduto(@RequestBody Produto produto) {
-		ProdutosRepository.delete(produto);
+		produtosRepository.delete(produto);
 	}
 
 	@GetMapping("/list/nome")
 	@Query(value = "SELECT * FROM Produto ORDER BY nome \n-- #pageable\n", countQuery = "SELECT count(*) FROM Produto", nativeQuery = true)
 	public Collection<Produto> OrdenarListaPorNome(@Param("nome") String nome) {
-		return ProdutosRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
+		return produtosRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
 
 	}
 
 	@GetMapping("/list/cat")
 	@Query(value = "SELECT * FROM Produto ORDER BY categoria \n-- #pageable\n", countQuery = "SELECT count(*) FROM Produto", nativeQuery = true)
 	public Collection<Produto> OrdenarListaPorCategoria(@Param("categoria") String categoria) {
-		return ProdutosRepository.findAll(Sort.by(Sort.Direction.ASC, "categoria"));
+		return produtosRepository.findAll(Sort.by(Sort.Direction.ASC, "categoria"));
 
 	}
 
 	@GetMapping("/list/preco")
 	@Query(value = "SELECT * FROM Produto ORDER BY preco \n-- #pageable\n", countQuery = "SELECT count(*) FROM Produto", nativeQuery = true)
 	public Collection<Produto> OrdenarListaPorPreco(@Param("preco") BigDecimal preco) {
-		return ProdutosRepository.findAll(Sort.by(Sort.Direction.ASC, "preco"));
+		return produtosRepository.findAll(Sort.by(Sort.Direction.ASC, "preco"));
 
 	}
 

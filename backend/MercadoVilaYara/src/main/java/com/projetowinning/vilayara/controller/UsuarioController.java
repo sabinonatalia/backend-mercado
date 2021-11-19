@@ -34,19 +34,19 @@ public class UsuarioController {
 
 	
 	@Autowired
-	UsuariosRepository UsuariosRepository;
+	UsuariosRepository usuariosRepository;
 	
 	@Autowired
 	private UsuarioService usuarioService; 
 	
 	@GetMapping
 	public ResponseEntity<List<Usuario>> GetAll(){
-		return ResponseEntity.ok(UsuariosRepository.findAll());
+		return ResponseEntity.ok(usuariosRepository.findAll());
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Usuario> GetById(@PathVariable long id){
-		return UsuariosRepository.findById(id).map(resp -> ResponseEntity.ok(resp))
+		return usuariosRepository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 
@@ -63,24 +63,19 @@ public class UsuarioController {
 	}
 	
 	
-	//@PostMapping("/usuario")
-	//public void salvarUsuario(@RequestBody Usuario usuario) {
-	//	UsuariosRepository.save(usuario);
-	//}
-	
-	@GetMapping("/lista") 
+	@GetMapping("/list") 
 	public List<Usuario> ListaUsuarios() {
-		return UsuariosRepository.findAll();
+		return usuariosRepository.findAll();
 	}
 	
 	@PutMapping("/usuario/{id}")
 	public Usuario atualizarUsuario(@RequestBody Usuario usuario) {
-		return UsuariosRepository.save(usuario);
+		return usuariosRepository.save(usuario);
 	}
 	
 	@DeleteMapping("/usuario")
 	public void deletarUsuario(@RequestBody Usuario usuario) {
-		UsuariosRepository.delete(usuario);
+		usuariosRepository.delete(usuario);
 	}
 	
 	@GetMapping("/usuario/list/nome")
@@ -88,7 +83,7 @@ public class UsuarioController {
 		countQuery = "SELECT count(*) FROM Usuario",
 		nativeQuery = true)
 		public Collection<Usuario> OrdenarListaPorNome(@Param("nome") String nome){
-		return UsuariosRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
+		return usuariosRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
 	}
 	
 	@GetMapping("/usuario/list/id")
@@ -96,6 +91,6 @@ public class UsuarioController {
 		countQuery = "SELECT count(*) FROM Usuario",
 		nativeQuery = true)
 		public Collection<Usuario> OrdenarListaPorID(@Param("id") Long id){
-		return UsuariosRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+		return usuariosRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
 	}
 }
