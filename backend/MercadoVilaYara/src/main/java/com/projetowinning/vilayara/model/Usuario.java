@@ -1,18 +1,14 @@
 package com.projetowinning.vilayara.model;
 
 
-import java.util.Date;
-//import java.util.List;
 
-//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 import javax.validation.constraints.Email;
 
 
@@ -34,12 +30,9 @@ public class Usuario {
 	@Email
 	private String email;
 	
-	private boolean admin;
+	private String tipo;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date data = new java.sql.Date(System.currentTimeMillis());
-
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -72,29 +65,20 @@ public class Usuario {
 		this.email = email;
 	}
 
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-	public boolean isAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
-
 	public String getSobrenome() {
 		return sobrenome;
 	}
 
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	

@@ -47,14 +47,14 @@ public class ProdutoController {
 	
 
 	// atualizar um produto
-	@PutMapping("/produto/{id}")
-	public ResponseEntity<Produto> atualizaProduto(@RequestBody Produto produto) {
+	@PutMapping
+	public ResponseEntity<Produto> putProduto(@RequestBody Produto produto) {
 		return ResponseEntity.status(HttpStatus.OK).body(produtosRepository.save(produto));
 	}
 
 	// buscar produto pelo nome
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Produto>> getById(@PathVariable String nome) {
+	public ResponseEntity<List<Produto>> getByNome(@PathVariable String nome) {
 		return ResponseEntity.ok(produtosRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 

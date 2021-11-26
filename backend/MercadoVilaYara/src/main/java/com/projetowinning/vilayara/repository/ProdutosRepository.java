@@ -7,4 +7,6 @@ import com.projetowinning.vilayara.model.Produto;
 public interface ProdutosRepository extends JpaRepository<Produto, Long> {
 
 	public List<Produto> findAllByNomeContainingIgnoreCase(String nome);
+	
+	
 }

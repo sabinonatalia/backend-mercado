@@ -50,6 +50,7 @@ public class UsuarioService {
 				user.get().setId(usuario.get().getId());
 				user.get().setNome(usuario.get().getNome());
 				user.get().setEmail(usuario.get().getEmail());
+				user.get().setTipo(usuario.get().getTipo());
 
 				return user;
 			}

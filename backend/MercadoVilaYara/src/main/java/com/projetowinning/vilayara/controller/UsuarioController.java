@@ -63,6 +63,7 @@ public class UsuarioController {
 	}
 	
 	
+	
 	@GetMapping("/list") 
 	public List<Usuario> ListaUsuarios() {
 		return usuariosRepository.findAll();
